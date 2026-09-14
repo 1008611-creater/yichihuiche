@@ -150,6 +150,19 @@ body {
 	display: none;
 }
 		
+/* 竖屏手机：把狐狸留在画面里，标题上移避开主体 */
+@media (orientation: portrait) {
+	#status-splash {
+		object-position: 34% 42%;
+	}
+	#status-title {
+		bottom: auto;
+		top: 8%;
+	}
+	#status-hint { bottom: 11%; }
+	#status-sub { bottom: 7.6%; }
+}
+
 #status-hint {
 	position: absolute;
 	bottom: 8.4%;
