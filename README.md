@@ -2,7 +2,9 @@
 
 知乎黑客松校园新锐季参赛作品 · AI 原生互动叙事 / 情绪治愈体验。
 
-在线体验：https://1008611-creater.github.io/yichihuiche/
+**在线体验** → https://1008611-creater.github.io/yichihuiche/
+
+**演示视频（2 分 16 秒）** → https://github.com/1008611-creater/yichihuiche/releases/download/demo-v1/yichihuiche-demo.mp4
 
 ## 一句话概念
 
@@ -16,11 +18,19 @@
 - 终章收回三张人生票，生成专属《释怀信》与可分享的「释怀卡」
 - 以知乎真实高赞内容作为「人间镜鉴」，让虚构落在真实人间经验上
 
+## 三段人生
+
+| 章节 | 遗憾原型 |
+| --- | --- |
+| 樱花与电车 | 错过 |
+| 没走的那条路 | 选错 |
+| 来不及 | 失去 |
+
 ## 技术
 
 - Godot 4.5 导出 Web（WebAssembly / WebGL2）
 - 三层 AI 结构：导演层（情绪状态机）+ 叙事层（角色卡）+ 知乎 grounding 层
-- 在线模型接入，无离线降级模式
+- 纯在线演示，网络异常时给出中文提示并保留已收录的真实条目
 
 ## 运行
 

@@ -4,18 +4,6 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
 		<meta name="theme-color" content="#0b0f16">
-		<meta property="og:type" content="website">
-		<meta property="og:site_name" content="一期一会 · 人间剧场">
-		<meta property="og:title" content="一期一会 · 人间剧场">
-		<meta property="og:description" content="带着一件没放下的遗憾走进雪夜车站。你改写不了结局，但你能改变告别的方式。">
-		<meta property="og:image" content="https://1008611-creater.github.io/yichihuiche/index.jpg">
-		<meta property="og:image:width" content="1920">
-		<meta property="og:image:height" content="1080">
-		<meta property="og:url" content="https://1008611-creater.github.io/yichihuiche/">
-		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:title" content="一期一会 · 人间剧场">
-		<meta name="twitter:description" content="带着一件没放下的遗憾走进雪夜车站。">
-		<meta name="twitter:image" content="https://1008611-creater.github.io/yichihuiche/index.jpg">
 		<meta name="description" content="一期一会 · 人间剧场 —— AI 原生互动叙事体验。带着一件没放下的遗憾走进雪夜车站，在几段陌生人的故事里，学会与自己的过去温柔告别。">
 		<title>一期一会 · 人间剧场</title>
 		<style>
@@ -161,43 +149,6 @@ body {
 	z-index: 2;
 	display: none;
 }
-		
-/* 竖屏手机：把狐狸留在画面里，标题上移避开主体 */
-@media (orientation: portrait) {
-	#status-splash {
-		object-position: 34% 42%;
-	}
-	#status-title {
-		bottom: auto;
-		top: 8%;
-	}
-	#status-hint { bottom: 11%; }
-	#status-sub { bottom: 7.6%; }
-}
-
-#status-hint {
-	position: absolute;
-	bottom: 8.4%;
-	left: 0;
-	right: 0;
-	text-align: center;
-	font-size: clamp(12px, 1.4vw, 15px);
-	font-weight: 300;
-	letter-spacing: 0.14em;
-	opacity: 0.82;
-}
-
-#status-sub {
-	position: absolute;
-	bottom: 5.6%;
-	left: 0;
-	right: 0;
-	text-align: center;
-	font-size: clamp(10px, 1.1vw, 12px);
-	font-weight: 300;
-	letter-spacing: 0.1em;
-	opacity: 0.45;
-}
 		</style>
 		<link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
 <link rel="apple-touch-icon" href="index.apple-touch-icon.png"/>
@@ -328,67 +279,5 @@ const engine = new Engine(GODOT_CONFIG);
 	}
 }());
 		</script>
-	
-		<script>
-// 加载体验增强层：不改动引擎引导脚本，只做观测与提示。
-(function () {
-	const status = document.getElementById('status');
-	const progress = document.getElementById('status-progress');
-	const notice = document.getElementById('status-notice');
-	if (!status || !progress) return;
-
-	const label = document.createElement('div');
-	label.id = 'status-hint';
-	label.textContent = '正在为你点亮这座车站…';
-	status.appendChild(label);
-
-	const sub = document.createElement('div');
-	sub.id = 'status-sub';
-	sub.textContent = '首次进入需要加载约 50MB 资源，请稍候片刻';
-	status.appendChild(sub);
-
-	let slowShown = false;
-	const slowTimer = setTimeout(function () {
-		if (status.isConnected) {
-			slowShown = true;
-			sub.textContent = '网络有点慢，还在继续加载，请不要关闭页面';
-		}
-	}, 45000);
-
-	function tick() {
-		if (!status.isConnected) { clearTimeout(slowTimer); return; }
-		const max = Number(progress.max);
-		const val = Number(progress.value);
-		if (max > 0 && val >= 0) {
-			const pct = Math.max(1, Math.min(99, Math.round((val / max) * 100)));
-			label.textContent = '正在为你点亮这座车站… ' + pct + '%';
-		}
-		requestAnimationFrame(tick);
-	}
-	requestAnimationFrame(tick);
-
-	// 英文报错一律换成人话
-	const zh = function (text) {
-		if (!text) return text;
-		if (/features required to run Godot/i.test(text) || /WebAssembly|SharedArrayBuffer/i.test(text)) {
-			return '你的浏览器暂时缺少运行这个体验所需的能力。\n建议用电脑版 Chrome 或 Edge 最新版打开。';
-		}
-		if (/Failed to fetch|NetworkError|load/i.test(text) && !/[\u4e00-\u9fff]/.test(text)) {
-			return '资源没有加载成功，可能是网络不稳定。\n请刷新页面重试一次。';
-		}
-		if (!/[\u4e00-\u9fff]/.test(text)) {
-			return '这里出了点小状况。\n请刷新页面重试；若仍然不行，换一个浏览器试试。';
-		}
-		return text;
-	};
-	new MutationObserver(function () {
-		if (notice.textContent && notice.textContent.trim()) {
-			const fixed = zh(notice.textContent);
-			if (fixed !== notice.textContent) notice.textContent = fixed;
-		}
-	}).observe(notice, { childList: true, characterData: true, subtree: true });
-}());
-		</script>
-
 	</body>
 </html>
