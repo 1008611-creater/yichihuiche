@@ -1,0 +1,44 @@
+; 涓€鏈熶竴浼?路 浜洪棿鍓у満
+config_version=5
+
+[application]
+
+config/name="涓€鏈熶竴浼?路 浜洪棿鍓у満"
+run/main_scene="res://game/main.tscn"
+config/features=PackedStringArray("4.5")
+run/max_fps=60
+
+[autoload]
+
+GameState="*res://game/game_state.gd"
+AILayer="*res://game/ai_layer.gd"
+ZhihuMirror="*res://game/zhihu_mirror.gd"
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[rendering]
+
+renderer/rendering_method="forward_plus"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/anisotropic_filtering_level=4
+anti_aliasing/quality/msaa_3d=2
+anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/use_taa=true
+anti_aliasing/quality/use_taa.web=false
+anti_aliasing/quality/screen_space_aa.web=0
+anti_aliasing/quality/use_debanding=true
+lights_and_shadows/directional_shadow/size=4096
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=3
+lights_and_shadows/positional_shadow/atlas_size=4096
+environment/defaults/default_clear_color=Color(0.02, 0.03, 0.055, 1)
+environment/defaults/default_environment="res://scenes/default_env.tres"
+
+
