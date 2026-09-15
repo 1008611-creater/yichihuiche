@@ -1,39 +1,25 @@
 # 一期一会 · 人间剧场
 
-知乎黑客松校园新锐季参赛作品 · AI 原生互动叙事 / 情绪治愈体验。
+《一期一会》是一款 Godot 4.5 制作的 AI 原生互动叙事游戏：玩家带着未放下的遗憾进入雪夜车站，在三段注定告别的人生中，体验“结局无法改写，但告别可以被认真对待”。
 
-**在线体验** → https://1008611-creater.github.io/yichihuiche/
+## 在线体验
 
-**演示视频（2 分 16 秒）** → https://github.com/1008611-creater/yichihuiche/releases/download/demo-v1/yichihuiche-demo.mp4
+[打开在线 Demo](https://1008611-creater.github.io/yichihuiche/)
 
-## 一句话概念
+## 本地运行
 
-带着一件现实中没能放下的遗憾进入剧场，由「引路人」带入三段注定以 Bad Ending 收场的陌生人人生。
-你无法把任何一段 BE 改成 HE —— 正如你无法改写过去；但你能改变告别的方式、说出口的话、和彼此被理解的程度。
+安装 Godot 4.5 stable，导入仓库根目录并运行 `game/main.tscn`。Windows 用户可运行 `PLAY_GAME.bat`。项目包含 Godot 游戏源码、Blender 车站源文件、公开素材和产品文档。
 
-## 玩法
+## 目录
 
-- 自由输入 + 含蓄的快捷选项，AI 导演判定并推进剧情
-- 每段故事一条缓慢流动的「距离线」，由你的话语牵动
-- 终章收回三张人生票，生成专属《释怀信》与可分享的「释怀卡」
-- 以知乎真实高赞内容作为「人间镜鉴」，让虚构落在真实人间经验上
+- `game/`：游戏逻辑、叙事状态、AI 语义层与知乎内容镜鉴
+- `scenes/`、`assets/`：Godot 场景和运行素材
+- `blender/`：车站源文件与制作说明
+- `产品文档/`：PRD、GDD、技术设计、叙事圣经和验收记录
+- `build/`：本地构建与部署留档
 
-## 三段人生
+## 安全与许可证
 
-| 章节 | 遗憾原型 |
-| --- | --- |
-| 樱花与电车 | 错过 |
-| 没走的那条路 | 选错 |
-| 来不及 | 失去 |
+仓库不包含 API Key、Access Secret、账号凭据或本地 AI 配置。代码与自制素材采用 MIT License，第三方素材和知乎内容仍受其各自许可证与服务条款约束。详见 `LICENSE` 与 `CONTRIBUTING.md`。
 
-## 技术
-
-- Godot 4.5 导出 Web（WebAssembly / WebGL2）
-- 三层 AI 结构：导演层（情绪状态机）+ 叙事层（角色卡）+ 知乎 grounding 层
-- 纯在线演示，网络异常时给出中文提示并保留已收录的真实条目
-
-## 运行
-
-直接用任意静态服务器托管本目录即可：
-
-    python -m http.server 8080
+欢迎通过 Issue 或 Pull Request 改进项目。
